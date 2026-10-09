@@ -16,13 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 1
 
       - name: Setup dart
-        uses: dart-lang/setup-dart@v1
+        uses: dart-lang/setup-dart@v1.7.0
 
       - name: Setup flutter
-        uses: subosito/flutter-action@v2.21.0
+        uses: subosito/flutter-action@v2.23.0
         with:
           channel: 'stable'
           cache: true
@@ -30,6 +32,18 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+
+      # Verify that the pushed tag matches the version in pubspec.yaml
+      # This prevents publishing a wrong version to pub.dev (cannot be undone)
+      - name: Verify tag matches version
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          PUBSPEC_VERSION=$(grep '^version:' pubspec.yaml | awk '{print $2}' | cut -d'+' -f1)
+          if [ "$TAG_VERSION" != "$PUBSPEC_VERSION" ]; then
+            echo "❌ Tag version ($TAG_VERSION) does not match pubspec.yaml ($PUBSPEC_VERSION)"
+            exit 1
+          fi
+          echo "✅ Tag matches version: $TAG_VERSION"
 
       - name: Publish - dry run
         run: dart pub publish --dry-run

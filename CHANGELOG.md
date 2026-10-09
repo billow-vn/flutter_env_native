@@ -1,3 +1,10 @@
+## 1.0.0
+
+* **BREAKING CHANGE**: Upgraded package to **1.0.0** with full **Swift Package Manager (SPM)** support for iOS.
+* Added `Package.swift` manifest in the `ios/` directory for SPM compatibility.
+* Updated `pubspec.yaml` with `swift_package_manager: true` platform configuration for iOS.
+* Dropped legacy CocoaPods-only requirement for Flutter 3.22+ and iOS 12.0+.
+
 ## 0.2.0
 * Fix: ignore flutter-internal variables when creating Environment.xcconfig
 * Doc: update iOS setup note

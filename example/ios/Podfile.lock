@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_env_native (0.0.1):
+  - flutter_env_native (1.0.0):
     - Flutter
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_env_native/ios"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_env_native: 52530b3bced65bd04f849b447c298e75d12565e6
+  Flutter: 71a624a5bc0c04062bf19101d501e466baf2fb47
+  flutter_env_native: 9bf30a31d936ac2f6f3aec86c9253557511b657d
 
 PODFILE CHECKSUM: 8e3fc9333c2789552617d287b24615da7a66e171
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.17.0
